@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.database import init_db
-from app.api import events, map
+from app.api import events, map, dashboard
 from app.tasks.ingest import start_scheduler, stop_scheduler, run_full_pipeline
 
 logging.basicConfig(
@@ -30,6 +30,7 @@ app.add_middleware(
 
 app.include_router(events.router)
 app.include_router(map.router)
+app.include_router(dashboard.router)
 
 
 @app.on_event("startup")

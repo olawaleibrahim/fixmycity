@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { GeoFeature, MapStats, TimeRange } from "@/types";
 
 const HAZARD_COLOURS: Record<string, string> = {
@@ -120,6 +121,23 @@ export default function Sidebar({
         <p className="text-xs text-gray-500">
           Showing <span className="text-white font-semibold">{totalShown}</span> geo-located events
         </p>
+      </div>
+
+      {/* Rankings link */}
+      <div className="p-4 border-b border-gray-800">
+        <Link
+          href="/rankings"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-gradient-to-r from-orange-900/40 to-red-900/40 border border-orange-700/30 hover:border-orange-600/50 transition-colors group"
+        >
+          <span className="text-xl">🔥</span>
+          <div className="flex-1 min-w-0">
+            <p className="text-white text-xs font-semibold group-hover:text-orange-300 transition-colors">
+              Neighbourhood Rankings
+            </p>
+            <p className="text-gray-500 text-xs">Daily shame leaderboard</p>
+          </div>
+          <span className="text-gray-600 group-hover:text-gray-400 transition-colors text-xs">→</span>
+        </Link>
       </div>
 
       {/* Selected feature detail */}

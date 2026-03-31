@@ -54,3 +54,28 @@ export interface MapStats {
   by_type: Record<string, number>;
   total: number;
 }
+
+export interface AreaRanking {
+  rank: number;
+  area: string;
+  shame_score: number;
+  prev_score: number | null;
+  trend_pct: number | null;
+  trend_label: string;
+  trend_direction: "up" | "down" | "flat" | "new";
+  descriptor: string;
+  event_count: number;
+  primary_hazard: string;
+  primary_hazard_emoji: string;
+  hazard_breakdown: Record<string, number>;
+  lat: number | null;
+  lon: number | null;
+}
+
+export interface RankingsResponse {
+  generated_at: string;
+  period: string;
+  total_areas: number;
+  rankings: AreaRanking[];
+  most_improved: AreaRanking[];
+}

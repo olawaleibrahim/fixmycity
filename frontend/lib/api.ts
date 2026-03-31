@@ -1,4 +1,4 @@
-import type { GeoCollection, HazardEvent, MapStats, TimeRange } from "@/types";
+import type { GeoCollection, HazardEvent, MapStats, RankingsResponse, TimeRange } from "@/types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
@@ -20,6 +20,12 @@ export const api = {
     }),
 
   mapStats: () => get<MapStats>("/map/stats"),
+
+  rankings: (timeRange: TimeRange = "all", limit = 20) =>
+    get<RankingsResponse>("/dashboard/rankings", {
+      time_range: timeRange,
+      limit: String(limit),
+    }),
 
   events: (params?: {
     timeRange?: TimeRange;
